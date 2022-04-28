@@ -1,11 +1,9 @@
 package com.cinema.main.cinema.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Value;
+import lombok.*;
 
-import java.util.UUID;
 
-@Value
+@Data
 @EqualsAndHashCode
 public class CinemaId {
     String id;

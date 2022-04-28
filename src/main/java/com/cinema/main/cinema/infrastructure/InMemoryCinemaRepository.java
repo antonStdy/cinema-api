@@ -44,7 +44,8 @@ public class InMemoryCinemaRepository implements CinemaRepository {
     }
 
     private Cinema getTestCinema() {
-        CinemaId id = new CinemaId("test");
+        CinemaId id = new CinemaId();
+        id.setId("test");
         Geo geo = new Geo(1.0, 1.0);
         Location loc = new Location("testCity", "testCountryCode", "testAddress", geo);
         CompanyInfo info = new CompanyInfo("testName", "testDescription");

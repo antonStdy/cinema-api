@@ -1,12 +1,13 @@
 package com.cinema.main.show.domain;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
-@RequiredArgsConstructor
+@Data
 @EqualsAndHashCode
 public class ShowId {
-    private final String id;
+    private String id;
 }

@@ -25,7 +25,9 @@ public class CinemaController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Cinema> get(@PathVariable String id) {
-        ResponseEntity<Cinema> response = cinemaService.getById(new CinemaId(id))
+        CinemaId cinemaId = new CinemaId();
+        cinemaId.setId(id);
+        ResponseEntity<Cinema> response = cinemaService.getById(cinemaId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
         return  response;

@@ -37,6 +37,8 @@ public class CinemaFactoryImpl implements CinemaFactory {
     private CinemaId createCinemaId(CinemaCreationCommand command) {
         String id = command.getCompanyName() + command.getLocation().getAddress();
         id = id.toLowerCase().replaceAll("[ \n\r\t]", "");
-        return new CinemaId(id);
+        CinemaId cinemaId = new CinemaId();
+        cinemaId.setId(id);
+        return cinemaId;
     }
 }

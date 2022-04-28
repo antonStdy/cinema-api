@@ -19,14 +19,16 @@ public class ShowController {
     private final ShowService showService;
 
     @PostMapping
-    public ResponseEntity<ShowId> create(CreateNewShowCommand command) {
+    public ResponseEntity<ShowId> create(@RequestBody CreateNewShowCommand command) {
         ShowId id = showService.create(command);
         return ResponseEntity.ok(id);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Show> get(@PathVariable String id) {
-        ResponseEntity<Show> response = showService.getById(new ShowId(id))
+        ShowId showId = new ShowId();
+        showId.setId(id);
+        ResponseEntity<Show> response = showService.getById(showId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
         return  response;

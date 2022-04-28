@@ -13,14 +13,17 @@ import java.util.UUID;
 public class FilmFactoryImpl implements FilmFactory {
     @Override
     public Film createNew(CreateFilmCommand command) {
-        FilmId id = new FilmId(command.getFilmName());
+        FilmId id = new FilmId();
+        id.setId(command.getFilmName());
         BaseInfo baseInfo = createBaseInfo(command);
 
         return new Film(id, baseInfo);
     }
 
     public FilmId filmIdFromString(String id) {
-        return new FilmId(id);
+        FilmId filmId = new FilmId();
+        filmId.setId(id);
+        return filmId;
     }
 
     private BaseInfo createBaseInfo(CreateFilmCommand command) {

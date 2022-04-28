@@ -1,11 +1,9 @@
 package com.cinema.main.film.domain.film;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-import lombok.Value;
+import lombok.*;
 
 
-@Value
+@Data
 @EqualsAndHashCode
 @ToString
 public class FilmId {
