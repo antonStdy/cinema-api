@@ -36,8 +36,8 @@ public class InMemoryUserRepository implements UserRepository {
 
     private Map<Account, User> loadTest() {
         Map<Account, User> test = new HashMap<>();
-        User u = new User(new Account("aaa@email.com",
-                "$2a$10$Gw25ZT5i4XFe3QxGPdr8m.JYc7NmsNMT3PQ2/S20G38uWhi4DZmce"));
+        User u = new User(new Account("aaaa@email.com",
+                "$2a$10$TFvBDMb4PhuY3ktYmD553eN.kpv15w4WzqXI0HLFxKnMoy0v42HXu"));
         test.put(u.getAccount(), u);
         return test;
     }
