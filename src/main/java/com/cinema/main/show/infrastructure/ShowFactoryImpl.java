@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class ShowFactoryImpl implements ShowFactory {
     public Show createShow(CreateNewShowCommand createNewShowCommand) {
-        ShowId id = new ShowId(UUID.fromString(createNewShowCommand.toString())); // TODO id. is it ok?
+        ShowId id = new ShowId(createNewShowCommand.toString()); // TODO id. is it ok?
         CinemaId cinemaId = createNewShowCommand.getCinemaId();
         FilmId filmId = createNewShowCommand.getFilmId();
         Date date = createNewShowCommand.getDate();

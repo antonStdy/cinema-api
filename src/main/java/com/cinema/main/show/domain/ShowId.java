@@ -8,5 +8,5 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @EqualsAndHashCode
 public class ShowId {
-    private final UUID id;
+    private final String id;
 }

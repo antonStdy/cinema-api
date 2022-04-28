@@ -1,5 +1,6 @@
 package com.cinema.main.film.domain.film;
 
+import lombok.EqualsAndHashCode;
 import lombok.Value;
 
 
@@ -7,3 +8,4 @@ import lombok.Value;
 public class FilmId {
     String name;
 }
+

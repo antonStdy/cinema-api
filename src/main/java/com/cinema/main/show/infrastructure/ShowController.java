@@ -1,13 +1,16 @@
 package com.cinema.main.show.infrastructure;
 
+import com.cinema.main.cinema.domain.Cinema;
+import com.cinema.main.cinema.domain.CinemaId;
+import com.cinema.main.show.domain.Show;
 import com.cinema.main.show.domain.ShowId;
 import com.cinema.main.show.domain.ShowService;
 import com.cinema.main.show.domain.dto.command.CreateNewShowCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/show")
@@ -19,5 +22,13 @@ public class ShowController {
     public ResponseEntity<ShowId> create(CreateNewShowCommand command) {
         ShowId id = showService.create(command);
         return ResponseEntity.ok(id);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Show> get(@PathVariable String id) {
+        ResponseEntity<Show> response = showService.getById(new ShowId(id))
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+        return  response;
     }
 }

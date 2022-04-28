@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface FilmRepository {
     void save(Film film);
     Optional<Film> getById(FilmId filmId);
+
+    Optional<Film> findById(FilmId id);
 }

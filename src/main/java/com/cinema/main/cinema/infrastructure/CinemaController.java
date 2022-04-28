@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController()
 @RequestMapping("/cinema")
 @RequiredArgsConstructor
-public class CinemaController {
 
+public class CinemaController {
     private final CinemaService cinemaService;
 
     @PostMapping
