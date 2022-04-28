@@ -1,9 +1,9 @@
 package com.cinema.main.user.infrastructure;
 
-import com.cinema.main.film.domain.film.Film;
 import com.cinema.main.user.domain.Account;
 import com.cinema.main.user.domain.User;
 import com.cinema.main.user.domain.UserRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +13,14 @@ import java.util.Optional;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class InMemoryUserRepository implements UserRepository {
-
-    private final Map<Account, User> users = new HashMap<>();
+    private final Map<Account, User> users = loadTest();
 
     @Override
     public User save(User user) {
-        if (!exists(user)) {
-            users.put(user.getAccount(), user);
-            log.info("user saved: {}", user);
-        }
+        users.put(user.getAccount(), user);
+        log.info("user saved: {}", user);
         return user;
     }
 
@@ -36,7 +34,11 @@ public class InMemoryUserRepository implements UserRepository {
         return Optional.empty();
     }
 
-    private boolean exists(User user) {
-        return users.containsKey(user.getAccount());
+    private Map<Account, User> loadTest() {
+        Map<Account, User> test = new HashMap<>();
+        User u = new User(new Account("aaa@email.com",
+                "$2a$10$Gw25ZT5i4XFe3QxGPdr8m.JYc7NmsNMT3PQ2/S20G38uWhi4DZmce"));
+        test.put(u.getAccount(), u);
+        return test;
     }
 }
