@@ -1,5 +1,6 @@
 package com.cinema.main.film.domain.film;
 
+import com.cinema.main.film.domain.dto.command.UpdateFilmCommand;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -12,4 +13,10 @@ public class Film {
     @Getter
     private final FilmId id;
     private final BaseInfo baseInfo;
+
+    public void update(UpdateFilmCommand command) {
+        baseInfo.setDescription(command.getDescription());
+        baseInfo.setDuration(command.getDuration());
+        baseInfo.setReleaseDate(command.getReleaseDate());
+    }
 }

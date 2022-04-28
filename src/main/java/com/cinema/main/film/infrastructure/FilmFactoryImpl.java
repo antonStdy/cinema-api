@@ -19,7 +19,14 @@ public class FilmFactoryImpl implements FilmFactory {
         return new Film(id, baseInfo);
     }
 
+    public FilmId filmIdFromString(String id) {
+        return new FilmId(id);
+    }
+
     private BaseInfo createBaseInfo(CreateFilmCommand command) {
-        return new BaseInfo(command.getFilmName(), command.getFilmDate());
+        BaseInfo baseInfo = new BaseInfo();
+        baseInfo.setName(command.getFilmName());
+        baseInfo.setReleaseDate(command.getFilmDate());
+        return baseInfo;
     }
 }

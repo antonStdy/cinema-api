@@ -1,12 +1,9 @@
 package com.cinema.main.film.infrastructure;
 
-import com.cinema.main.cinema.domain.Cinema;
-import com.cinema.main.cinema.domain.CinemaId;
 import com.cinema.main.film.domain.FilmFactory;
 import com.cinema.main.film.domain.FilmRepository;
 import com.cinema.main.film.domain.FilmService;
 import com.cinema.main.film.domain.dto.command.*;
-import com.cinema.main.film.domain.exception.FilmNotFoundException;
 import com.cinema.main.film.domain.film.Film;
 import com.cinema.main.film.domain.film.FilmId;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +23,19 @@ public class FilmServiceImpl implements FilmService {
         repository.save(film);
         return film.getId();
     }
+
     @Override
-    public Optional<Film> getById(FilmId id) {
+    public Optional<Film> getFilmById(FilmId id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public void updateFilm(FilmId filmId, UpdateFilmCommand command) {
+        Film film = repository.findById(filmId)
+                .orElseThrow(() -> new RuntimeException("FilmNotFound by id:" + filmId));
+
+        film.update(command);
+
+        repository.save(film);
     }
 }

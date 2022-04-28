@@ -1,13 +1,11 @@
 package com.cinema.main.film.infrastructure;
 
-import com.cinema.main.cinema.domain.Cinema;
-import com.cinema.main.cinema.domain.CinemaId;
+import com.cinema.main.film.domain.FilmFactory;
 import com.cinema.main.film.domain.FilmService;
 import com.cinema.main.film.domain.dto.command.CreateFilmCommand;
+import com.cinema.main.film.domain.dto.command.UpdateFilmCommand;
 import com.cinema.main.film.domain.film.Film;
 import com.cinema.main.film.domain.film.FilmId;
-import com.cinema.main.show.domain.Show;
-import com.cinema.main.show.domain.ShowId;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class FilmController {
     private final FilmService filmService;
+    private final FilmFactory filmFactory;
 
     @PostMapping
     public ResponseEntity<FilmId> create(@RequestBody CreateFilmCommand command) {
@@ -28,11 +27,16 @@ public class FilmController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Film> get(@PathVariable String id) {
-        ResponseEntity<Film> response = filmService.getById(new FilmId(id))
+        ResponseEntity<Film> response = filmService.getFilmById(new FilmId(id))
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
         return  response;
     }
 
-
+    @PutMapping(value = "/{id}")
+    public void update(@PathVariable String id,
+                       @RequestBody UpdateFilmCommand command) {
+        FilmId filmId = filmFactory.filmIdFromString(id);
+        filmService.updateFilm(filmId, command);
+    }
 }

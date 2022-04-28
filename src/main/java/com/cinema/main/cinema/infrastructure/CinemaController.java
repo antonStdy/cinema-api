@@ -17,7 +17,8 @@ public class CinemaController {
     private final CinemaService cinemaService;
 
     @PostMapping
-    public ResponseEntity<SavedCinemaId> create(CinemaCreationCommand cinemaCreationCommand) {
+    public ResponseEntity<SavedCinemaId> create(
+            @RequestBody CinemaCreationCommand cinemaCreationCommand) {
         SavedCinemaId id = cinemaService.create(cinemaCreationCommand);
         return ResponseEntity.ok(id);
     }

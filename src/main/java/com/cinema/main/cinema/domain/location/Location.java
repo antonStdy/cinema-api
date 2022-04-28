@@ -1,6 +1,8 @@
 package com.cinema.main.cinema.domain.location;
 
+import lombok.Getter;
 
+@Getter
 public class Location {
     private final String city;
     private final String countryCode;

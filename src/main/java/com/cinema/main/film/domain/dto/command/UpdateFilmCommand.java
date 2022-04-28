@@ -1,4 +1,4 @@
-package com.cinema.main.film.domain.film;
+package com.cinema.main.film.domain.dto.command;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.time.Duration;
 import java.util.Date;
 
 @Data
-public class BaseInfo {
+public class UpdateFilmCommand {
     private String name;
     private Date releaseDate;
     private Duration duration;
