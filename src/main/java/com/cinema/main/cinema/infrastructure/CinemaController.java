@@ -28,9 +28,6 @@ public class CinemaController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
         return  response;
-//        return cinemaService.getById(new CinemaId(id))
-//                .map(ResponseEntity::ok)
-//                .orElse(ResponseEntity.notFound().build());
     }
 
 }

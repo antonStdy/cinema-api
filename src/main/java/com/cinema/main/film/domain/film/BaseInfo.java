@@ -8,7 +8,6 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class BaseInfo {
     private final String name;
-    //    private final String localName;
     private final Date releaseDate;
     private Duration duration;
     private String description;
