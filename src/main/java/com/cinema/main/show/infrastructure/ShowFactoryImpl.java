@@ -9,17 +9,16 @@ import com.cinema.main.show.domain.languageinfo.Language;
 import com.cinema.main.show.domain.languageinfo.LanguageInfo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class ShowFactoryImpl implements ShowFactory {
     public Show createShow(CreateNewShowCommand createNewShowCommand) {
         ShowId id = new ShowId();
-        id.setId(createNewShowCommand.toString());
+        id.setId(getId());
         CinemaId cinemaId = createNewShowCommand.getCinemaId();
         FilmId filmId = createNewShowCommand.getFilmId();
         Date date = createNewShowCommand.getDate();
@@ -44,5 +43,9 @@ public class ShowFactoryImpl implements ShowFactory {
 
     private Price priceDTOToPrice(PriceDTO priceDTO) {
         return new Price(priceDTO.getName(), priceDTO.getPrice(), priceDTO.getAdditionalInfo());
+    }
+
+    private String getId() {
+        return Long.toString(new Random().nextLong(), 10);
     }
 }

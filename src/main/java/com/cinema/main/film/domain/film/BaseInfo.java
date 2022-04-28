@@ -9,6 +9,5 @@ import java.util.Date;
 public class BaseInfo {
     private String name;
     private Date releaseDate;
-    private Duration duration;
     private String description;
 }

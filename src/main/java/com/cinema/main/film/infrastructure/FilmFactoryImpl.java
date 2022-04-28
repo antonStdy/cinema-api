@@ -7,8 +7,6 @@ import com.cinema.main.film.domain.film.Film;
 import com.cinema.main.film.domain.film.FilmId;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 public class FilmFactoryImpl implements FilmFactory {
     @Override

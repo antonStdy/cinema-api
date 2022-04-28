@@ -1,8 +1,13 @@
 package com.cinema.main.show.domain.languageinfo;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+@Data
 public class Language {
-    private final String lang;
+    private String lang;
+
+    public Language(String lang) {
+        this.lang = lang;
+    }
 }

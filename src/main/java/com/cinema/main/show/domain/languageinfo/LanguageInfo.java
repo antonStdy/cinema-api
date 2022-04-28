@@ -1,11 +1,18 @@
 package com.cinema.main.show.domain.languageinfo;
 
+import lombok.Data;
 import lombok.Value;
 
 import java.util.List;
 
-@Value
+@Data
 public class LanguageInfo {
-    Language primaryLanguage;
-    List<Language> subtitles;
+    private Language primaryLanguage;
+
+    private List<Language> subtitles;
+
+    public LanguageInfo(Language primaryLanguage, List<Language> subtitles) {
+        this.primaryLanguage = primaryLanguage;
+        this.subtitles = subtitles;
+    }
 }

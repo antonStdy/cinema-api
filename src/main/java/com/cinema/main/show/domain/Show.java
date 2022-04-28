@@ -12,6 +12,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @ToString
+@Getter
 public class Show {
     @Getter
     private final ShowId id;
